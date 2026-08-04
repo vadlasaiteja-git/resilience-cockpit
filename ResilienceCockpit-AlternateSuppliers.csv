@@ -1,0 +1,4 @@
+ID,SupplierNumber,SupplierName,Address,Country_code,SupplierRating,createdAt,createdBy,modifiedAt,modifiedBy
+45130039-0f1d-4bb2-b1a5-9db45df11e71,S4513003,Toshiba,Bankstreet,US,7
+45130039-0f1d-4bb2-b1a5-9db45df11e72,S4513004,AmarRaja,Guntur,IN,6
+45130039-0f1d-4bb2-b1a5-9db45df11e73,S4513005,Nippon,Tokyo,JP,9
