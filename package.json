@@ -12,11 +12,31 @@
     "@sap/cds-dk": "^9"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "watch": "cds watch" 
   },
   "private": true,
   "cds": {
     "requires": {
+      "db":{
+        "kind":"sqlite",
+        "credentials":{
+        "url":"db.sqlite"
+        }
+      },
+      "auth": {
+        "kind": "basic",
+        "users": {
+          "alice": {
+            "password": "alicepassword123",
+            "roles": ["Admin", "User", "authenitcated-user"]
+          },
+          "bob": {
+            "password": "bobpassword456",
+            "roles": ["User","authenitcated-user"]
+          }
+        }
+      },   
       "[production]": {
         "auth": "xsuaa"
       },

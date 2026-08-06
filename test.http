@@ -1,0 +1,64 @@
+### ODATA Service Entry Point
+
+GET http://localhost:4004/service/ResilienceCockpitService
+Authorization: Basic bob:bobpassword456
+
+### Request to fetch Alternate Supplier List
+GET http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers
+
+
+### Request to fetch Alternate Supplier List with filtration
+GET http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers?$filter=CountryCode eq 'IN'
+
+### Read Specific Entity
+GET http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=1860499b-117a-410a-ab4f-9753596c3641,IsActiveEntity=true)
+
+
+### Expansion of a Entity [ Supplier Parts]
+GET http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=1860499b-117a-410a-ab4f-9753596c3641,IsActiveEntity=true)?$expand=SupplierParts
+
+### Update Specific Entity , Property
+PATCH  http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=1860499b-117a-410a-ab4f-9753596c3641,IsActiveEntity=true)
+Authorization: Basic bob:bobpassword456
+Content-Type: application/json
+
+{
+    "SupplierRating": 98
+}
+
+### Update Specific Entity , Nested Property
+PATCH  http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=1860499b-117a-410a-ab4f-9753596c3641,IsActiveEntity=true)
+Content-Type: application/json
+
+{
+   "CountryCode": "RU"
+}
+### Update all properties
+PATCH http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=1860496f-1d50-4829-b02d-bb879ac81179,IsActiveEntity=true)
+Content-Type: application/json
+
+{
+    "SupplierNumber": "SupplierNumber-1860505",
+    "SupplierName": "IBM Computers",
+    "Address": "Address.2.11441.03",
+    "SupplierRating": 80,
+    "CountryName": "India",
+    "CountryCode": "IN"
+}
+
+
+### Create a Specific Entity 
+POST  http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers
+Content-Type: application/json
+
+{
+    "SupplierNumber": "SupplierNumber-1860501",
+    "SupplierName": "HCL Computers",
+    "Address": "Address.2.1451.03",
+    "SupplierRating": 70,
+    "CountryCode": "IN",
+    "IsActiveEntity": true
+}
+
+### Delete a Specific Entity
+DELETE http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=1860496f-1d50-4829-b02d-bb879ac81179,IsActiveEntity=true)
