@@ -5,7 +5,12 @@ Authorization: Basic bob:bobpassword456
 
 ### Request to fetch Alternate Supplier List
 GET http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers
+Authorization: Basic bob:bobpassword456
 
+### Request to fetch Alternate Supplier List in ODATA V2
+
+GET http://localhost:4004/odata/v2/service/ResilienceCockpitService/AlternateSuppliers
+Authorization: Basic bob:bobpassword456
 
 ### Request to fetch Alternate Supplier List with filtration
 GET http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers?$filter=CountryCode eq 'IN'
@@ -62,3 +67,5 @@ Content-Type: application/json
 
 ### Delete a Specific Entity
 DELETE http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=1860496f-1d50-4829-b02d-bb879ac81179,IsActiveEntity=true)
+
+
