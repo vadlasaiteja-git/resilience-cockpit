@@ -1,13 +1,11 @@
 using { ResilienceCockpit as my } from '../db/schema.cds';
 
 @path : '/service/ResilienceCockpitService'
-@(requires: 'authenitcated-user')
 service ResilienceCockpitService
-
 {
     @cds.redirection.target
+    @odata.draft.bypass
     @odata.draft.enabled
-    @odata.draft.bypass 
     entity AlternateSuppliers as
         projection on my.AlternateSuppliers
         {
@@ -18,6 +16,17 @@ service ResilienceCockpitService
         excluding
         {
             Country
+        }
+        actions
+        {
+            function SupplierItemCount
+            (
+            )
+            returns Integer;
+
+            action UpVote
+            (
+            )returns AlternateSuppliers ;
         };
 
     @cds.redirection.target
@@ -25,3 +34,8 @@ service ResilienceCockpitService
     entity AlternateParts as
         projection on my.AlternateParts;
 }
+
+annotate ResilienceCockpitService with @requires :
+[
+    'authenitcated-user'
+];

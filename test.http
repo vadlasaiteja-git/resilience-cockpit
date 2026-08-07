@@ -18,18 +18,18 @@ Authorization: Basic bob:bobpassword456
 
 ### Read Specific Entity
 GET http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=1860499b-117a-410a-ab4f-9753596c3641,IsActiveEntity=true)
-
+Authorization: Basic bob:bobpassword456
 
 ### Expansion of a Entity [ Supplier Parts]
 GET http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=1860499b-117a-410a-ab4f-9753596c3641,IsActiveEntity=true)?$expand=SupplierParts
 
 ### Update Specific Entity , Property
-PATCH  http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=18604971-3900-43c3-9461-5e31e641a9cb,IsActiveEntity=true)
+PATCH  http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=a108c6da-4113-46fc-bfdf-0becd23ddc7b,IsActiveEntity=true)
 Authorization: Basic bob:bobpassword456
 Content-Type: application/json
 
 {
-    "SupplierRating": 75
+    "SupplierRating": 38
 }
 
 ### Update Specific Entity , Nested Property
@@ -72,3 +72,11 @@ Content-Type: application/json
 DELETE http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=a2668ccf-576d-443c-9e5c-feef29cd5b8c,IsActiveEntity=true)
 Authorization: Basic alice:alicepassword123
 
+###Custom Function trigger
+GET http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=18604971-3900-43c3-9461-5e31e641a9cb,IsActiveEntity=true)/SupplierItemCount
+Authorization: Basic bob:bobpassword456
+
+
+###Custom Action trigger
+POST http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=18605002-7328-4d21-866c-8de619a126eb,IsActiveEntity=true)/UpVote
+Authorization: Basic bob:bobpassword456

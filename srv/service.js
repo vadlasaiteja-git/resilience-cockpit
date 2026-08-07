@@ -1,3 +1,5 @@
+const UPDATE = require("@sap/cds/lib/ql/UPDATE");
+
 let impl = function(srv321)
 {
  // Simple Event Handler
@@ -57,7 +59,29 @@ let injectSupplierRating = function(data, req)
 srv321.before("WRITE", "AlternateSuppliers",countryCodeValidation)
 
 
-}
+//Function to Return the Number of Supplier Parts associated with a Supplier
+srv321.on("SupplierItemCount", "AlternateSuppliers",async function(req)
+{
+    let supplierID = req.params[0].ID
+    let supplierParts = await SELECT("ID").from("ResilienceCockpit.SupplierParts").where({AlternateSupplier_ID:supplierID});
+    return supplierParts.length;
+})
+
+//Action to Upvote a Supplier
+
+srv321.on("UpVote","AlternateSuppliers",async function (req) 
+{ 
+    let supplierID = req.params[0].ID
+    let supplierObject = await SELECT.one.from("ResilienceCockpit.AlternateSuppliers").where({ID:supplierID});
+    supplierObject.SupplierRating += 1;
+
+    await UPDATE("ResilienceCockpit.AlternateSuppliers").set({SupplierRating:supplierObject.SupplierRating}).where({ID:supplierID});
+    req.notify("RatingUpdated");
+    return supplierObject;
+    
+})
+
+};
 
 
 module.exports = impl;
