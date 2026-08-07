@@ -14,6 +14,7 @@ Authorization: Basic bob:bobpassword456
 
 ### Request to fetch Alternate Supplier List with filtration
 GET http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers?$filter=CountryCode eq 'IN'
+Authorization: Basic bob:bobpassword456
 
 ### Read Specific Entity
 GET http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=1860499b-117a-410a-ab4f-9753596c3641,IsActiveEntity=true)
@@ -23,20 +24,21 @@ GET http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID
 GET http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=1860499b-117a-410a-ab4f-9753596c3641,IsActiveEntity=true)?$expand=SupplierParts
 
 ### Update Specific Entity , Property
-PATCH  http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=1860499b-117a-410a-ab4f-9753596c3641,IsActiveEntity=true)
+PATCH  http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=18604971-3900-43c3-9461-5e31e641a9cb,IsActiveEntity=true)
 Authorization: Basic bob:bobpassword456
 Content-Type: application/json
 
 {
-    "SupplierRating": 98
+    "SupplierRating": 75
 }
 
 ### Update Specific Entity , Nested Property
-PATCH  http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=1860499b-117a-410a-ab4f-9753596c3641,IsActiveEntity=true)
+PATCH  http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=18604982-045d-4bd3-b070-a4364f8b16be,IsActiveEntity=true)
+Authorization: Basic bob:bobpassword456
 Content-Type: application/json
 
 {
-   "CountryCode": "RU"
+   "CountryCode": "US"
 }
 ### Update all properties
 PATCH http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=1860496f-1d50-4829-b02d-bb879ac81179,IsActiveEntity=true)
@@ -54,18 +56,19 @@ Content-Type: application/json
 
 ### Create a Specific Entity 
 POST  http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers
+Authorization: Basic alice:alicepassword123
 Content-Type: application/json
 
 {
-    "SupplierNumber": "SupplierNumber-1860501",
-    "SupplierName": "HCL Computers",
-    "Address": "Address.2.1451.03",
-    "SupplierRating": 70,
-    "CountryCode": "IN",
+    "SupplierNumber": "SupplierNumber-1860555",
+    "SupplierName": "Putin IT Systems",
+    "Address": "Address.6.821.33",
+    "SupplierRating": 58,
+    "CountryCode": "RU",
     "IsActiveEntity": true
 }
 
 ### Delete a Specific Entity
-DELETE http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=1860496f-1d50-4829-b02d-bb879ac81179,IsActiveEntity=true)
-
+DELETE http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=a2668ccf-576d-443c-9e5c-feef29cd5b8c,IsActiveEntity=true)
+Authorization: Basic alice:alicepassword123
 

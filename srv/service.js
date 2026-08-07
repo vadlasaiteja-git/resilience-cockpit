@@ -1,0 +1,63 @@
+let impl = function(srv321)
+{
+ // Simple Event Handler
+ srv321
+    .before("READ","AlternateSuppliers",function(req)
+    {
+        console.log("Read Triggered!");
+    })
+
+// Modifying Supplier Name
+let injectSupplierRating = function(data, req)
+{   
+    let startOfDay = new Date();
+    startOfDay.setHours(0,0,0,0);
+    
+    for (let i = 0; i < data.length; i++) 
+    {
+//Converting the Ratings to the base 10
+    data[i].SupplierRating /= 10;
+//If Rating > 5 , Append Highly Rated to the Supplier Name
+    if (data[i].SupplierRating >= 5) 
+        {
+          data[i].SupplierName += " - Highly Rated";
+        } 
+//If modified within 24 hrs, Add Recently Updated. 
+    if (new Date(data[i].modifiedAt) >= startOfDay) 
+        {
+          data[i].SupplierName += " - Recently Updated";
+        } 
+    console.log(data[i]);
+
+    }
+}
+ srv321
+    .after("READ","AlternateSuppliers", injectSupplierRating) 
+
+// Validating the Country Code before Updates or Creations
+
+ async function countryCodeValidation(req)
+{
+    if (req.data?.CountryCode)
+    {
+        let countryCode = req.data.CountryCode;
+        let country = await SELECT.one.from("sap.common.Countries")
+                                      .where({code:countryCode});
+            if(!country){
+            return req.error(400, 'Country not found');
+            }        
+    }
+}   
+//srv321.before("UPDATE","AlternateSuppliers",countryCodeValidation  )
+
+//srv321.before("CREATE", "AlternateSuppliers",countryCodeValidation)
+
+// Instead of using in UPDATE and CREATE seperately, we can use this validation on "WRITE" operation
+
+srv321.before("WRITE", "AlternateSuppliers",countryCodeValidation)
+
+
+}
+
+
+module.exports = impl;
