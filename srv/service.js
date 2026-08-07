@@ -81,6 +81,26 @@ srv321.on("UpVote","AlternateSuppliers",async function (req)
     
 })
 
+//Action to DownVote a Supplier
+
+srv321.on("DownVote","AlternateSuppliers",async function (req) 
+{ 
+    let supplierID = req.params[0].ID
+    let supplierObject = await SELECT.one.from("ResilienceCockpit.AlternateSuppliers").where({ID:supplierID});
+    supplierObject.SupplierRating -= 1;
+
+    await UPDATE("ResilienceCockpit.AlternateSuppliers").set({SupplierRating:supplierObject.SupplierRating}).where({ID:supplierID});
+    req.notify("RatingUpdated");
+    return supplierObject;
+    
+})
+
+
+//Draft Event on NEW
+
+srv321.after("NEW","AlternateSuppliers.drafts", async function(req) {
+    console.log("New Draft Entry is Created")
+})
 };
 
 

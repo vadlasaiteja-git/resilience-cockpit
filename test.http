@@ -17,7 +17,7 @@ GET http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers?$f
 Authorization: Basic bob:bobpassword456
 
 ### Read Specific Entity
-GET http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=1860499b-117a-410a-ab4f-9753596c3641,IsActiveEntity=true)
+GET http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=18605002-7328-4d21-866c-8de619a126eb,IsActiveEntity=true)
 Authorization: Basic bob:bobpassword456
 
 ### Expansion of a Entity [ Supplier Parts]
@@ -77,6 +77,25 @@ GET http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID
 Authorization: Basic bob:bobpassword456
 
 
-###Custom Action trigger
-POST http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=18605002-7328-4d21-866c-8de619a126eb,IsActiveEntity=true)/UpVote
+###Custom Action trigger - UpVote
+POST http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=a108c6da-4113-46fc-bfdf-0becd23ddc7b,IsActiveEntity=true)/UpVote
 Authorization: Basic bob:bobpassword456
+
+###Custom Action trigger - DownVote
+POST http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=a108c6da-4113-46fc-bfdf-0becd23ddc7b,IsActiveEntity=true)/DownVote
+Authorization: Basic alice:alicepassword123
+
+
+### Create a Draft Entry
+POST  http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers
+Authorization: Basic alice:alicepassword123
+Content-Type: application/json
+
+{
+    "SupplierNumber": "SupplierNumber-1865",
+    "SupplierName": "Draft IT Systems",
+    "Address": "Address.6.821.33",
+    "SupplierRating": 88,
+    "CountryCode": "IN",
+    "IsActiveEntity": false
+}

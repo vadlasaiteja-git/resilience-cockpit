@@ -26,7 +26,13 @@ service ResilienceCockpitService
 
             action UpVote
             (
-            )returns AlternateSuppliers ;
+            )
+            returns AlternateSuppliers;
+
+            action DownVote
+            (
+            )
+            returns AlternateSuppliers;
         };
 
     @cds.redirection.target
