@@ -101,8 +101,23 @@ Content-Type: application/json
 }
 
 
-### Read from the Standard API
+### Read from the External Standard API
 GET https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_INFORECORD_PROCESS_SRV/A_PurchasingInfoRecord
 
 APIKey: UlJkIRGCClGwtE4TFvCRZfG4d5WzSJ15
 Accept: application/json
+
+### Read from the API connected to Internal Service
+GET http://localhost:4004/service/ResilienceCockpitService/A_PurchasingInfoRecord
+Authorization: Basic alice:alicepassword123
+
+
+### Reload the Destinations / Refresh Local Proxy
+GET http://localhost:8887/reload
+
+### Read from the Destination created for API in BTP Cockpit
+GET http://SAP_API_HUB.dest/A_PurchasingInfoRecord
+Accept: application/json
+
+
+

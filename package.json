@@ -59,10 +59,7 @@
         "kind": "odata-v2",
         "model": "srv/external/API_INFORECORD_PROCESS_SRV",
         "credentials":{
-            "url":"https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_INFORECORD_PROCESS_SRV",
-            "headers":{
-            "APIKey":"UlJkIRGCClGwtE4TFvCRZfG4d5WzSJ15"
-                     }
+                  "destination":"SAP_API_HUB"
                     }
 
       }
