@@ -6,7 +6,10 @@
     "@cap-js/hana": "^2",
     "@sap/cds": "^9",
     "@sap/cds-common-content": "^3.2.0",
-    "@sap/xssec": "^4"
+    "@sap/xssec": "^4",
+    "@sap-cloud-sdk/connectivity": "^4",
+    "@sap-cloud-sdk/http-client": "^4",
+    "@sap-cloud-sdk/resilience": "^4"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2.4",
@@ -51,7 +54,18 @@
       "connectivity": true,
       "destinations": true,
       "html5-repo": true,
-      "application-logging": true
+      "application-logging": true,
+      "API_INFORECORD_PROCESS_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_INFORECORD_PROCESS_SRV",
+        "credentials":{
+            "url":"https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_INFORECORD_PROCESS_SRV",
+            "headers":{
+            "APIKey":"UlJkIRGCClGwtE4TFvCRZfG4d5WzSJ15"
+                     }
+                    }
+
+      }
     }
   }
 }

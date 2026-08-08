@@ -1,6 +1,6 @@
 const UPDATE = require("@sap/cds/lib/ql/UPDATE");
 
-let impl = function(srv321)
+let impl = async function(srv321)
 {
  // Simple Event Handler
  srv321
@@ -101,6 +101,15 @@ srv321.on("DownVote","AlternateSuppliers",async function (req)
 srv321.after("NEW","AlternateSuppliers.drafts", async function(req) {
     console.log("New Draft Entry is Created")
 })
+
+
+//Connecting S4HANA API
+let S4API = await cds.connect.to("API_INFORECORD_PROCESS_SRV");
+
+srv321.on("READ","A_PurchasingInfoRecord", async function(req)
+    {
+        return S4API.read(req.query);
+    })
 };
 
 

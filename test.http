@@ -99,3 +99,10 @@ Content-Type: application/json
     "CountryCode": "IN",
     "IsActiveEntity": false
 }
+
+
+### Read from the Standard API
+GET https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_INFORECORD_PROCESS_SRV/A_PurchasingInfoRecord
+
+APIKey: UlJkIRGCClGwtE4TFvCRZfG4d5WzSJ15
+Accept: application/json
