@@ -1,0 +1,182 @@
+{
+  "_version": "1.86.0",
+  "sap.app": {
+    "id": "nexus.supplierlist",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.30.0",
+      "toolsId": "0ad54707-528f-418f-b772-20c3fe23061f"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/service/ResilienceCockpitService/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "Suppliers-manage": {
+          "semanticObject": "Suppliers",
+          "action": "manage",
+          "title": "{{Suppliers-manage.flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.151.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "nexus.supplierlist.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "AlternateSuppliersList",
+          "target": "AlternateSuppliersList"
+        },
+        {
+          "pattern": "AlternateSuppliers({key}):?query:",
+          "name": "AlternateSuppliersObjectPage",
+          "target": "AlternateSuppliersObjectPage"
+        },
+        {
+          "pattern": "AlternateSuppliers({key})/SupplierParts({key2}):?query:",
+          "name": "SupplierPartsObjectPage",
+          "target": "SupplierPartsObjectPage"
+        }
+      ],
+      "targets": {
+        "AlternateSuppliersList": {
+          "type": "Component",
+          "id": "AlternateSuppliersList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/AlternateSuppliers",
+              "variantManagement": "Page",
+              "navigation": {
+                "AlternateSuppliers": {
+                  "detail": {
+                    "route": "AlternateSuppliersObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "AlternateSuppliersObjectPage": {
+          "type": "Component",
+          "id": "AlternateSuppliersObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/AlternateSuppliers",
+              "navigation": {
+                "SupplierParts": {
+                  "detail": {
+                    "route": "SupplierPartsObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "SupplierPartsObjectPage": {
+          "type": "Component",
+          "id": "SupplierPartsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/AlternateSuppliers/SupplierParts"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {
+      "enableLazyLoading": true
+    }
+  }
+}
