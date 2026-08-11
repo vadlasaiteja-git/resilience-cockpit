@@ -1,10 +1,11 @@
 using { ResilienceCockpit as my } from '../db/schema.cds';
 
 using { API_INFORECORD_PROCESS_SRV as external } from './external/API_INFORECORD_PROCESS_SRV';
-
+using { sap.common.Countries as Countries} from '@sap/cds/common';
 @path : '/service/ResilienceCockpitService'
 service ResilienceCockpitService
 {
+    entity CommonCountries as projection on Countries;
     @cds.redirection.target
     @odata.draft.bypass
     @odata.draft.enabled
@@ -12,7 +13,7 @@ service ResilienceCockpitService
         projection on my.AlternateSuppliers
         {
             *,
-            Country.name as CountryName,
+            Country.name as name,
             Country.code as CountryCode
         }
         excluding

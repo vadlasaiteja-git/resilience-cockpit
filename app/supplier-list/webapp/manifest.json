@@ -152,6 +152,13 @@
                     "route": "SupplierPartsObjectPage"
                   }
                 }
+              },
+              "controlConfiguration": {
+                "SupplierParts/@com.sap.vocabularies.UI.v1.LineItem#SupplierParts": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
               }
             }
           }
