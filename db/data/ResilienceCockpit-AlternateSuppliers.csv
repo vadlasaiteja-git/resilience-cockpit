@@ -1,6 +1,6 @@
 ID,SupplierNumber,SupplierName,Address,Country_code,SupplierRating,createdAt,createdBy,modifiedAt,modifiedBy
-1860496f-1d50-4829-b02d-bb879ac81179,SupplierNumber-1860496,SupplierName-1860496,Address-1860496,IN,81,2011-04-08T00:00:00.000Z,createdBy.13vkg@example.org,2013-10-09T00:00:00.000Z,modifiedBy.13vkg@example.org
-18604971-3900-43c3-9461-5e31e641a9cb,SupplierNumber-1860497,SupplierName-1860497,Address-1860497,JP,7,2018-10-21T00:00:00.000Z,createdBy.13vkh@example.net,2021-07-23T00:00:00.000Z,modifiedBy.13vkh@example.com
-18604982-045d-4bd3-b070-a4364f8b16be,SupplierNumber-1860498,SupplierName-1860498,Address-1860498,US,42,2015-05-27T00:00:00.000Z,createdBy.13vki@example.net,2005-10-04T00:00:00.000Z,modifiedBy.13vki@example.org
-1860499b-117a-410a-ab4f-9753596c3641,SupplierNumber-1860499,SupplierName-1860499,Address-1860499,RU,97,2014-04-06T00:00:00.000Z,createdBy.13vkj@example.org,2017-07-23T00:00:00.000Z,modifiedBy.13vkj@example.com
-18605002-7328-4d21-866c-8de619a126eb,SupplierNumber-1860500,SupplierName-1860500,Address-1860500,CH,52,2008-02-23T00:00:00.000Z,createdBy.13vkk@example.org,2021-11-13T00:00:00.000Z,modifiedBy.13vkk@example.org
+1860496f-1d50-4829-b02d-bb879ac81179,SupplierNumber-1860496,SupplierName-1860496,Address-1860496,IN,5,2011-04-08T00:00:00.000Z,createdBy.13vkg@example.org,2013-10-09T00:00:00.000Z,modifiedBy.13vkg@example.org
+18604971-3900-43c3-9461-5e31e641a9cb,SupplierNumber-1860497,SupplierName-1860497,Address-1860497,JP,3,2018-10-21T00:00:00.000Z,createdBy.13vkh@example.net,2021-07-23T00:00:00.000Z,modifiedBy.13vkh@example.com
+18604982-045d-4bd3-b070-a4364f8b16be,SupplierNumber-1860498,SupplierName-1860498,Address-1860498,US,1,2015-05-27T00:00:00.000Z,createdBy.13vki@example.net,2005-10-04T00:00:00.000Z,modifiedBy.13vki@example.org
+1860499b-117a-410a-ab4f-9753596c3641,SupplierNumber-1860499,SupplierName-1860499,Address-1860499,RU,4,2014-04-06T00:00:00.000Z,createdBy.13vkj@example.org,2017-07-23T00:00:00.000Z,modifiedBy.13vkj@example.com
+18605002-7328-4d21-866c-8de619a126eb,SupplierNumber-1860500,SupplierName-1860500,Address-1860500,CH,2,2008-02-23T00:00:00.000Z,createdBy.13vkk@example.org,2021-11-13T00:00:00.000Z,modifiedBy.13vkk@example.org

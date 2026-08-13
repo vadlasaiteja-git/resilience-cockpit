@@ -18,9 +18,9 @@ let injectSupplierRating = function(data, req)
     for (let i = 0; i < data.length; i++) 
     {
 //Converting the Ratings to the base 10
-    data[i].SupplierRating /= 10;
+//    data[i].SupplierRating /= 10;
 //If Rating > 5 , Append Highly Rated to the Supplier Name
-    if (data[i].SupplierRating >= 5) 
+    if (data[i].SupplierRating >= 4) 
         {
           data[i].SupplierName += " - Highly Rated";
         } 

@@ -196,6 +196,13 @@
                     }
                   }
                 }
+              },
+              "controlConfiguration": {
+                "PossibleAlternates/@com.sap.vocabularies.UI.v1.LineItem#AlternativesforOriginalMaterial": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
               }
             }
           }

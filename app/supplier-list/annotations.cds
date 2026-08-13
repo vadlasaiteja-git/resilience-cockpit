@@ -61,19 +61,35 @@ annotate service.AlternateSuppliers with @(
             Value : SupplierName,
         },
         {
+            $Type : 'UI.DataFieldForAnnotation',
+            Target : '@UI.DataPoint#SupplierRating1',
+            Label : 'SupplierRating',
+        },
+        {
             $Type : 'UI.DataField',
             Label : 'Address',
             Value : Address,
         },
         {
-            $Type : 'UI.DataField',
-            Label : 'Supplier Rating',
-            Value : SupplierRating,
+            $Type : 'UI.DataFieldForActionGroup',
+            Actions : [
+                {
+                    $Type : 'UI.DataFieldForAction',
+                    Action : 'ResilienceCockpitService.UpVote',
+                    Label : 'UpVote',
+                },
+                {
+                    $Type : 'UI.DataFieldForAction',
+                    Action : 'ResilienceCockpitService.DownVote',
+                    Label : 'DownVote',
+                },
+            ],
+            ID : 'UpdateRating',
+            Label : 'Update Rating',
         },
         {
             $Type : 'UI.DataField',
-            Label : 'Country Name',
-            Value : CountryName,
+            Value : CountryCode,
         },
     ],
     UI.HeaderInfo : {
@@ -89,6 +105,11 @@ annotate service.AlternateSuppliers with @(
         },
     },
     UI.DataPoint #SupplierRating : {
+        Value : SupplierRating,
+        Visualization : #Rating,
+        TargetValue : 5,
+    },
+    UI.DataPoint #SupplierRating1 : {
         Value : SupplierRating,
         Visualization : #Rating,
         TargetValue : 5,
@@ -134,6 +155,12 @@ annotate service.SupplierParts with @(
             Label : 'Part Information',
             ID : 'PartInformation',
             Target : '@UI.FieldGroup#PartInformation',
+        },
+        {
+            $Type : 'UI.ReferenceFacet',
+            Label : 'Alternatives for Original Material',
+            ID : 'AlternativesforOriginalMaterial',
+            Target : 'PossibleAlternates/@UI.LineItem#AlternativesforOriginalMaterial',
         },
     ],
     UI.FieldGroup #PartInformation : {
@@ -199,7 +226,7 @@ annotate service.AlternateSuppliers with {
             ],
             Label : 'Select Country',
         },
-        Common.ValueListWithFixedValues : true,
+        Common.ValueListWithFixedValues : false,
 )};
 
 
@@ -208,3 +235,43 @@ annotate service.CommonCountries with {
         Common.Text : name,
         Common.Text.@UI.TextArrangement : #TextFirst,
 )};
+annotate service.AlternateParts with @(
+    UI.LineItem #AlternativesforOriginalMaterial : [
+        {
+            $Type : 'UI.DataField',
+            Value : AlternatePart_ID,
+            Label : 'AlternatePart_ID',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : OriginalPartNumber,
+            Label : 'OriginalPartNumber',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : PercentageMatch,
+            Label : 'PercentageMatch',
+        },
+    ]
+);
+
+annotate service.AlternateParts with {
+    OriginalPartNumber @(
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'A_PurchasingInfoRecord',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : OriginalPartNumber,
+                    ValueListProperty : 'Material',
+                },
+            ],
+        },
+        Common.ValueListWithFixedValues : false,
+)};
+
+annotate service.A_PurchasingInfoRecord with {
+    Material @Common.Text : SupplierMaterialNumber
+};
+
