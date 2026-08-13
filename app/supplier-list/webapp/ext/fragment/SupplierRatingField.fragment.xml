@@ -1,0 +1,4 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<!-- <Button id="Button" core:require="{ handler: 'nexus/supplierlist/ext/fragment/SupplierRatingField'}" text="SupplierRatingField" press="handler.onPress" /> -->
+	<RatingIndicator id="RI_default" maxValue="5" class="sapUiSmallMarginBottom" value="{SupplierRating}" tooltip="Rating Tooltip" editable="false"/>
+</core:FragmentDefinition>

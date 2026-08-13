@@ -39,6 +39,11 @@ service ResilienceCockpitService
         };
 
     @cds.redirection.target
+
+    entity SupplierParts as
+        projection on my.SupplierParts;
+        
+    @cds.redirection.target
     @odata.draft.enabled
     entity AlternateParts as
         projection on my.AlternateParts;

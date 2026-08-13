@@ -23,6 +23,16 @@ annotate service.AlternateSuppliers with @(
                 $Type : 'UI.DataField',
                 Value : CountryCode,
             },
+            {
+                $Type : 'UI.DataFieldForAction',
+                Action : 'ResilienceCockpitService.UpVote',
+                Label : 'UpVote',
+            },
+            {
+                $Type : 'UI.DataFieldForAction',
+                Action : 'ResilienceCockpitService.DownVote',
+                Label : 'DownVote',
+            },
         ],
     },
     UI.Facets : [
@@ -77,6 +87,11 @@ annotate service.AlternateSuppliers with @(
             $Type : 'UI.DataField',
             Value : SupplierNumber,
         },
+    },
+    UI.DataPoint #SupplierRating : {
+        Value : SupplierRating,
+        Visualization : #Rating,
+        TargetValue : 5,
     },
 );
 
@@ -182,13 +197,14 @@ annotate service.AlternateSuppliers with {
                     ValueListProperty : 'code',
                 },
             ],
+            Label : 'Select Country',
         },
         Common.ValueListWithFixedValues : true,
 )};
+
 
 annotate service.CommonCountries with {
     code @(
         Common.Text : name,
         Common.Text.@UI.TextArrangement : #TextFirst,
 )};
-

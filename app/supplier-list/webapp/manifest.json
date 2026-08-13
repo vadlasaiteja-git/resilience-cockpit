@@ -158,6 +158,18 @@
                   "tableSettings": {
                     "type": "ResponsiveTable"
                   }
+                },
+                "@com.sap.vocabularies.UI.v1.FieldGroup#GeneratedGroup": {
+                  "fields": {
+                    "SupplierRatingField": {
+                      "template": "nexus.supplierlist.ext.fragment.SupplierRatingField",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "DataField::Address"
+                      },
+                      "label": "Supplier Rating"
+                    }
+                  }
                 }
               }
             }
@@ -170,7 +182,21 @@
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/AlternateSuppliers/SupplierParts"
+              "contextPath": "/AlternateSuppliers/SupplierParts",
+              "content": {
+                "body": {
+                  "sections": {
+                    "SpecDoc": {
+                      "template": "nexus.supplierlist.ext.fragment.SpecDoc",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "PartInformation"
+                      },
+                      "title": "Specification Document"
+                    }
+                  }
+                }
+              }
             }
           }
         }
