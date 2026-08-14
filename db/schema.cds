@@ -48,3 +48,10 @@ entity AlternateParts : cuid
     PercentageMatch : Integer;
     AlternatePart : Association to one SupplierParts;
 }
+
+entity SupplierLocations{
+    key Supplier : String(32);
+    Lat : Decimal(10, 8);
+    Lng : Decimal(10,8);
+    
+}

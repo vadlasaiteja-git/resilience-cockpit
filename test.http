@@ -120,4 +120,11 @@ GET http://SAP_API_HUB.dest/A_PurchasingInfoRecord
 Accept: application/json
 
 
+###For selecting only specific columns
+GET http://localhost:4004/service/ResilienceCockpitService/A_PurchasingInfoRecord?$select=PurchasingInfoRecord,Material,PurchasingInfoRecordDesc
+Authorization: Basic alice:alicepassword123
 
+
+### For retrieving single record
+GET http://localhost:4004/service/ResilienceCockpitService/A_PurchasingInfoRecord(PurchasingInfoRecord='5300000100')?$select=PurchasingInfoRecord,Material,PurchasingInfoRecordDesc
+Authorization: Basic alice:alicepassword123
