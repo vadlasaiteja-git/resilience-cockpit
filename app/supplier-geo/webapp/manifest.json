@@ -58,6 +58,9 @@
   },
   "sap.ui5": {
     "flexEnabled": true,
+    "resourceRoots": {
+      "sap.ui.geomap": "./resources/sap/ui/geomap"
+    },
     "dependencies": {
       "minUI5Version": "1.151.0",
       "libs": {
