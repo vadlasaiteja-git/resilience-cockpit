@@ -22,7 +22,7 @@ Authorization: Basic bob:bobpassword456
 
 ### Expansion of a Entity [ Supplier Parts]
 GET http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=1860499b-117a-410a-ab4f-9753596c3641,IsActiveEntity=true)?$expand=SupplierParts
-
+Authorization: Basic bob:bobpassword456
 ### Update Specific Entity , Property
 PATCH  http://localhost:4004/service/ResilienceCockpitService/AlternateSuppliers(ID=a108c6da-4113-46fc-bfdf-0becd23ddc7b,IsActiveEntity=true)
 Authorization: Basic bob:bobpassword456
@@ -128,3 +128,32 @@ Authorization: Basic alice:alicepassword123
 ### For retrieving single record
 GET http://localhost:4004/service/ResilienceCockpitService/A_PurchasingInfoRecord(PurchasingInfoRecord='5300000100')?$select=PurchasingInfoRecord,Material,PurchasingInfoRecordDesc
 Authorization: Basic alice:alicepassword123
+
+
+###Fetch Data from the Local JSON DB [ Without Cloud Connector]
+GET http://localhost:3000/ShippingCostPerConsignment
+
+###Response :  404 Error as the DB is not connected with Cloud Connector. 
+
+### Added the Backend system in the Cloud Connector [ Cloud- To-On Prem ] and Created a SubAccount Destination in the BTP 
+### Reload the Destinations / Refresh Local Proxy
+GET http://localhost:8887/reload
+
+###Connect to the Backend via destination created
+GET http://jsondb.dest/ShippingCostPerConsignment
+### Response 200 OK : Connecting Local DB via cloud connector is success !!
+
+###Simple Post Request
+POST http://jsondb.dest/ShippingCostPerConsignment
+Content-Type: application/json
+
+ {
+ "SourceCountry": "IN",
+ "cost_value":1000,
+ "cost_currency_code":"INR"
+ }
+
+### Filter based on country code
+
+GET http://jsondb.dest/ShippingCostPerConsignment?SourceCountry=CH
+

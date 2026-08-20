@@ -14,7 +14,9 @@ service ResilienceCockpitService
         {
             *,
             Country.name as name,
-            Country.code as CountryCode
+            Country.code as CountryCode,
+            0 as ShippingCost : Decimal(10,2),
+            '' as ShippingCurrency : String(3)
         }
         excluding
         {

@@ -91,6 +91,16 @@ annotate service.AlternateSuppliers with @(
             $Type : 'UI.DataField',
             Value : CountryCode,
         },
+        {
+            $Type : 'UI.DataField',
+            Value : ShippingCost,
+            Label : 'ShippingCost',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : ShippingCurrency,
+            Label : 'ShippingCurrency',
+        },
     ],
     UI.HeaderInfo : {
         Title : {

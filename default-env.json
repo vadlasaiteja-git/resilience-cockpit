@@ -3,6 +3,10 @@
         {
             "name":"SAP_API_HUB",
             "url":"http://SAP_API_HUB.dest/"
+        },
+        {
+            "name":"jsondb",
+            "url":"http://jsondb.dest"
         }
     ]
 }

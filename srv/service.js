@@ -3,11 +3,31 @@ const UPDATE = require("@sap/cds/lib/ql/UPDATE");
 let impl = async function(srv321)
 {
  // Simple Event Handler
- srv321
-    .before("READ","AlternateSuppliers",function(req)
-    {
-        console.log("Read Triggered!");
-    })
+//  srv321
+//     .before("READ","AlternateSuppliers",function(req)
+//     {
+//         console.log("Read Triggered!");
+//     });
+
+//Connecting ShippingCostAPI to add ShippingCost to AlternarteSuppliers Data
+
+let ShippingCostAPI = await cds.connect.to("ShippingCostAPI");
+
+srv321.after("READ","AlternateSuppliers", async function(data,req) {
+    if(data.constructor === Array){
+                for(let supplierindex in data){
+                    let supplier = data[supplierindex];
+                    if(supplier.CountryCode ){
+                        let countryCode = supplier.CountryCode;
+                        let response = await ShippingCostAPI.get(`/ShippingCostPerConsignment?SourceCountry=${countryCode}`)
+                        supplier.ShippingCurrency = response[0].cost_currency_code;
+                        supplier.ShippingCost = response[0].cost_value;
+                    }
+                }
+            }
+            return data;
+    
+});
 
 // Modifying Supplier Name
 let injectSupplierRating = function(data, req)
@@ -140,7 +160,10 @@ srv321.on("READ","A_PurchasingInfoRecord", async function(req)
             }
 
         });
-    })
+    });
+
+
+
 };
 
 

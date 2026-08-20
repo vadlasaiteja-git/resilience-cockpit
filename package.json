@@ -63,6 +63,12 @@
       "destinations": true,
       "html5-repo": true,
       "application-logging": true,
+      "ShippingCostAPI": {
+        "kind": "rest",
+        "credentials": {
+        "destination": "jsondb"
+        }
+      },
       "API_INFORECORD_PROCESS_SRV": {
         "kind": "odata-v2",
         "model": "srv/external/API_INFORECORD_PROCESS_SRV",
