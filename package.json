@@ -4,19 +4,21 @@
   "dependencies": {
     "@cap-js-community/odata-v2-adapter": "^1.16.1",
     "@cap-js/hana": "^2",
+    "@sap-cloud-sdk/connectivity": "^4",
+    "@sap-cloud-sdk/http-client": "^4",
+    "@sap-cloud-sdk/resilience": "^4",
     "@sap/cds": "^9",
     "@sap/cds-common-content": "^3.2.0",
     "@sap/xssec": "^4",
-    "@sap-cloud-sdk/connectivity": "^4",
-    "@sap-cloud-sdk/http-client": "^4",
-    "@sap-cloud-sdk/resilience": "^4"
+    "express": "^5.2.1",
+    "pdfkit": "^0.19.1"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2.4",
     "@sap/cds-dk": "^9",
     "cds-plugin-ui5": "^0.17.0",
-    "rimraf": "^5.0.5",
-    "mbt": "^1.2.49"
+    "mbt": "^1.2.49",
+    "rimraf": "^5.0.5"
   },
   "scripts": {
     "start": "cds-serve",
@@ -66,7 +68,7 @@
       "ShippingCostAPI": {
         "kind": "rest",
         "credentials": {
-        "destination": "jsondb"
+          "destination": "jsondb"
         }
       },
       "API_INFORECORD_PROCESS_SRV": {
@@ -83,5 +85,19 @@
   ],
   "sapux": [
     "app/supplier-list"
-  ]
+  ],
+  "description": "Welcome to your new CAP project.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vadlasaiteja-git/resilience-cockpit.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/vadlasaiteja-git/resilience-cockpit/issues"
+  },
+  "homepage": "https://github.com/vadlasaiteja-git/resilience-cockpit#readme"
 }
