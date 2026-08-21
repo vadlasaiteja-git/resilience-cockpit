@@ -51,7 +51,7 @@ entity AlternateParts : cuid
 
 entity SupplierLocations{
     key Supplier : String(32);
-    Lat : Decimal(10, 8);
-    Lng : Decimal(10,8);
+    Lat : Decimal(11, 8);
+    Lng : Decimal(11,8);
     
 }

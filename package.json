@@ -23,6 +23,7 @@
   "scripts": {
     "start": "cds-serve",
     "watch": "cds watch",
+    "watch-hybrid": "cds watch --profile hybrid",
     "watch-supplier-list": "cds watch --open nexus.supplierlist/index.html?sap-ui-xx-viewCache=false --livereload false",
     "undeploy": "cf undeploy ResilienceCockpit --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
@@ -38,6 +39,11 @@
           "url": "db.sqlite"
         }
       },
+      "[hybrid]": {
+        "db": {
+          "kind": "hana"
+        }
+      },      
       "auth": {
         "kind": "basic",
         "users": {
@@ -59,7 +65,10 @@
         }
       },
       "[production]": {
-        "auth": "xsuaa"
+        "auth": "xsuaa",
+        "db": {
+          "kind": "hana"
+        }
       },
       "connectivity": true,
       "destinations": true,
